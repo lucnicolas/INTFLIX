@@ -17,7 +17,7 @@ public class SeasonController {
 
     @PostMapping(path = "/season") // Map ONLY POST Requests
     public @ResponseBody
-    void addNewSeries(@RequestBody Season season) {
+    void addNewSeason(@RequestBody Season season) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         seasonRepository.save(season);
@@ -25,14 +25,14 @@ public class SeasonController {
 
     @GetMapping(path = "/season")
     public @ResponseBody
-    Iterable<Season> getAllSeries() {
+    Iterable<Season> getAllSeasons() {
         // This returns a JSON or XML with the users
         return seasonRepository.findAll();
     }
 
     @DeleteMapping(path = "/season")
     public @ResponseBody
-    void deleteUser(@RequestParam Long id) {
+    void deleteSeason(@RequestParam Long id) {
         Optional<Season> series = seasonRepository.findById(id);
         series.ifPresent(seasonRepository::delete);
     }

@@ -32,7 +32,7 @@ public class SeriesController {
 
     @DeleteMapping(path = "/series")
     public @ResponseBody
-    void deleteUser(@RequestParam Long id) {
+    void deleteSeries(@RequestParam Long id) {
         Optional<Series> series = seriesRepository.findById(id);
         series.ifPresent(seriesRepository::delete);
     }

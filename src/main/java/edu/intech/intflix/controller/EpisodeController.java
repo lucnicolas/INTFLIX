@@ -17,7 +17,7 @@ public class EpisodeController {
 
     @PostMapping(path = "/episode") // Map ONLY POST Requests
     public @ResponseBody
-    void addNewSeries(@RequestBody Episode episode) {
+    void addNewEpisode(@RequestBody Episode episode) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         episodeRepository.save(episode);
@@ -25,14 +25,14 @@ public class EpisodeController {
 
     @GetMapping(path = "/episode")
     public @ResponseBody
-    Iterable<Episode> getAllSeries() {
+    Iterable<Episode> getAllEpisodes() {
         // This returns a JSON or XML with the users
         return episodeRepository.findAll();
     }
 
     @DeleteMapping(path = "/episode")
     public @ResponseBody
-    void deleteUser(@RequestParam Long id) {
+    void deleteEpisode(@RequestParam Long id) {
         Optional<Episode> series = episodeRepository.findById(id);
         series.ifPresent(episodeRepository::delete);
     }
