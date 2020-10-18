@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Series} from '../../model/series/series';
-import {SeriesService} from '../../controllers/series/series.service';
-import {EpisodesService} from '../../controllers/episodes/episodes.service';
+import {SeriesService} from '../../service/series/series.service';
+import {EpisodesService} from '../../service/episodes/episodes.service';
 
 @Component({
   selector: 'app-series',

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Season} from '../../model/season/season';
-import {SeasonsService} from '../../controllers/seasons/seasons.service';
-import {EpisodesService} from '../../controllers/episodes/episodes.service';
+import {SeasonsService} from '../../service/seasons/seasons.service';
+import {EpisodesService} from '../../service/episodes/episodes.service';
 import {ActivatedRoute} from '@angular/router';
 import {Episode} from '../../model/episode/episode';
 import {Series} from '../../model/series/series';
