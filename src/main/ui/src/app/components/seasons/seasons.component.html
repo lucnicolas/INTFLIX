@@ -1,0 +1,14 @@
+<h1>{{ currentSeries }}</h1>
+<div class="row">
+  <div *ngFor="let currentSeason of seasons" class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Season {{ currentSeason.num }}</h5>
+      <div class="list-group">
+        <a *ngFor="let currentEpisode of episodes" [routerLink]="['/'+currentSeries, currentEpisode.title, currentEpisode.id]" class="list-group-item list-group-item-action">
+          {{ currentEpisode.title }}
+          <span *ngIf="currentEpisode.seen" class="badge badge-success">Seen</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
