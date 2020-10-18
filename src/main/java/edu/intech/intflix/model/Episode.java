@@ -1,8 +1,6 @@
 package edu.intech.intflix.model;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
 
 @Entity
 @Table(name = "Episode")
