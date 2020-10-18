@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Episode} from '../../models/episode/episode';
+import {Episode} from '../../model/episode/episode';
 import {EpisodesService} from '../../controllers/episodes/episodes.service';
 import {ActivatedRoute} from '@angular/router';
 

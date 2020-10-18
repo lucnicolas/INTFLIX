@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Series} from '../../models/series/series';
+import {Series} from '../../model/series/series';
 import {SeriesService} from '../../controllers/series/series.service';
 import {EpisodesService} from '../../controllers/episodes/episodes.service';
 

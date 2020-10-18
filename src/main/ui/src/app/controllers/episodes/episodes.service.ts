@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Season} from '../../models/season/season';
-import {Episode} from '../../models/episode/episode';
+import {Season} from '../../model/season/season';
+import {Episode} from '../../model/episode/episode';
 import {SeasonsComponent} from '../../components/seasons/seasons.component';
 import {SeasonsService} from '../seasons/seasons.service';
 

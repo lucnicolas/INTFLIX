@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Season} from '../../models/season/season';
+import {Season} from '../../model/season/season';
 import {SeriesService} from '../series/series.service';
-import {Series} from '../../models/series/series';
+import {Series} from '../../model/series/series';
 
 @Injectable({
   providedIn: 'root'

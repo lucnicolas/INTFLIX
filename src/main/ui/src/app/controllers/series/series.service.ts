@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Series} from '../../models/series/series';
+import {Series} from '../../model/series/series';
 
 @Injectable({
   providedIn: 'root'

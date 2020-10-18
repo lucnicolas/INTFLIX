@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Season} from '../../models/season/season';
+import {Season} from '../../model/season/season';
 import {SeasonsService} from '../../controllers/seasons/seasons.service';
 import {EpisodesService} from '../../controllers/episodes/episodes.service';
 import {ActivatedRoute} from '@angular/router';
-import {Episode} from '../../models/episode/episode';
-import {Series} from '../../models/series/series';
+import {Episode} from '../../model/episode/episode';
+import {Series} from '../../model/series/series';
 
 @Component({
   selector: 'app-seasons',
