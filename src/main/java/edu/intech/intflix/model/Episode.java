@@ -59,7 +59,7 @@ public class Episode {
 	}
 
 	/**
-	 * @return true if the episode have been seen and false if not
+	 * This method returns the visualization state of the Episode.
 	 */
 	public boolean isSeen() {
 		return this.seen;

@@ -71,7 +71,11 @@ public class Season {
 	}
 
 	/**
-	 * @return true if the episode have been seen and false if not
+	 *
+	 * This method returns the visualization state of the Season.
+	 *
+	 * @return <code>true</code> if all Episodes of the Season have been fully
+	 *         watched, <code>false</code> otherwise.
 	 */
 	public boolean isSeen() {
 		this.seen = true;

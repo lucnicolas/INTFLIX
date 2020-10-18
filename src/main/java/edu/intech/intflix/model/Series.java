@@ -57,7 +57,7 @@ public class Series {
 
 	/**
 	 *
-	 * This method returns the visualization state of the Serie.
+	 * This method returns the visualization state of the Series.
 	 *
 	 * @return <code>true</code> if all Seasons of the Series have been fully
 	 *         watched, <code>false</code> otherwise.
