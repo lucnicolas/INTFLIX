@@ -63,8 +63,8 @@ public class Series {
 	 *         watched, <code>false</code> otherwise.
 	 */
 	public boolean isSeen() {
-		this.seen = true;
 		if (this.seasons.size() > 0) {
+			this.seen = true;
 			for (Season s : this.seasons.values()) {
 				if (!s.isSeen()) {
 					this.seen = false;
@@ -72,7 +72,8 @@ public class Series {
 				}
 			}
 		}
-		return this.seen;	}
+		return this.seen;
+	}
 
 	/**
 	 * @param seen Set true if the series is seen and false if not
