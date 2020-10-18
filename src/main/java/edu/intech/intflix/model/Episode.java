@@ -1,25 +1,27 @@
 package edu.intech.intflix.model;
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Table(name = "Episode")
 @NamedQueries({
 		@NamedQuery(name = "Episode.findAll", query = "SELECT episodes FROM Episode episodes"),
-		// @NamedQuery(name = "Episode.findBySeries",
-		//		query = "SELECT episode FROM Season season, IN(season.episodes) episode WHERE season.id = :id")
+		@NamedQuery(name = "Episode.findBySeries",
+				query = "SELECT episode FROM Season season, IN(season.episodes) episode WHERE season.id = :id")
 })
 public class Episode {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id = -1;
+	private int id;
 
-	@Column(name = "title")
-	private final String title;
+	@Column(name = "title", nullable = false)
+	private String title;
 
-	@Column(name = "number")
-	private final int number;
+	@Column(name = "number", nullable = false)
+	private int number;
 
 	private boolean seen = false;
 
@@ -33,6 +35,8 @@ public class Episode {
 		this.number = number;
 	}
 
+	public Episode() { }
+
 	/**
 	 * @return the id of the episode
 	 */
@@ -43,28 +47,28 @@ public class Episode {
 	/**
 	 * @return the title of the episode
 	 */
-	public final String getTitle() {
+	public String getTitle() {
 		return this.title;
 	}
 
 	/**
 	 * @return the number
 	 */
-	public final int getNumber() {
+	public int getNumber() {
 		return this.number;
 	}
 
 	/**
 	 * @return true if the episode have been seen and false if not
 	 */
-	public final boolean isSeen() {
+	public boolean isSeen() {
 		return this.seen;
 	}
 
 	/**
 	 * @param seen set if the episode is seen or not
 	 */
-	public final void setSeen(final boolean seen) {
+	public void setSeen(final boolean seen) {
 		this.seen = seen;
 	}
 
