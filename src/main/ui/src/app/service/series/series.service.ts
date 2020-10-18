@@ -11,7 +11,7 @@ export class SeriesService {
   private readonly seriesUrl: string;
 
   constructor(private http: HttpClient) {
-    this.seriesUrl = 'http://localhost:8080/api/episode';
+    this.seriesUrl = 'http://localhost:8080/api/series';
   }
 
   public findAll(): Observable<Series[]> {
