@@ -16,7 +16,7 @@ public class Season {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false)
-	private int id;
+	private Long id;
 
 	@Column(name = "number", nullable = false)
 	private int number;
@@ -41,7 +41,7 @@ public class Season {
 	/**
 	 * @return the season id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -104,7 +104,7 @@ public class Season {
 
 	@Override
 	public int hashCode() {
-		return getId();
+		return Math.toIntExact(getId());
 	}
 
 	@Override

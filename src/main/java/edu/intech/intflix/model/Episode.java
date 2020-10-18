@@ -13,7 +13,7 @@ public class Episode {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 
 	@Column(name = "title", nullable = false)
 	private String title;
@@ -38,7 +38,7 @@ public class Episode {
 	/**
 	 * @return the id of the episode
 	 */
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
@@ -77,7 +77,7 @@ public class Episode {
 
 	@Override
 	public int hashCode() {
-		return getId();
+		return Math.toIntExact(getId());
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class Episode {
 		if (!(obj instanceof Episode)) {
 			return false;
 		}
-		return ((Episode) obj).getId() == getId();
+		return ((Episode) obj).getId().equals(getId());
 	}
 
 }

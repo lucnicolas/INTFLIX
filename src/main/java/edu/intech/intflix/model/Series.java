@@ -12,7 +12,7 @@ public class Series {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false)
-	private int id;
+	private Long id;
 
 	@Column(name = "name", unique = true, nullable = false)
 	private String name;
@@ -37,7 +37,7 @@ public class Series {
 	/**
 	 * @return the series id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -96,7 +96,7 @@ public class Series {
 
 	@Override
 	public int hashCode() {
-		return getId();
+		return Math.toIntExact(getId());
 	}
 
 	@Override
