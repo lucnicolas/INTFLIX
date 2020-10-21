@@ -50,10 +50,25 @@ public class Episode {
 	}
 
 	/**
+	 * Set title of the episode
+	 * @param title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
 	 * @return the number
 	 */
 	public int getNumber() {
 		return this.number;
+	}
+
+	/**
+	 * @param number to set
+	 */
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 	/**
@@ -64,7 +79,8 @@ public class Episode {
 	}
 
 	/**
-	 * @param seen set if the episode is seen or not
+	 * Set if the episode is seen or not
+	 * @param seen
 	 */
 	public void setSeen(final boolean seen) {
 		this.seen = seen;
