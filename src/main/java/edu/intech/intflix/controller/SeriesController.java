@@ -1,7 +1,7 @@
 package edu.intech.intflix.controller;
 
-import edu.intech.intflix.model.Series;
-import edu.intech.intflix.model.SeriesRepository;
+import edu.intech.intflix.data.model.Series;
+import edu.intech.intflix.data.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

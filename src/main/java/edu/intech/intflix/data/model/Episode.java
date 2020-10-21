@@ -1,4 +1,4 @@
-package edu.intech.intflix.model;
+package edu.intech.intflix.data.model;
 
 import javax.persistence.*;
 
