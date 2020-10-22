@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Series} from "../../model/series/series";
 import {ActivatedRoute, Router} from "@angular/router";
-import {SeriesService} from "../../service/series/series.service";
+import {SeriesService} from "../../../service/series/series.service";
+import {Series} from "../../../model/series/series";
 
 @Component({
   selector: 'app-series-form',
@@ -27,6 +27,6 @@ export class SeriesFormComponent implements OnInit {
   }
 
   gotoSeriesList() {
-    this.router.navigate(['/series']);
+    this.router.navigate(['/admin/series']);
   }
 }
