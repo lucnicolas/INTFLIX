@@ -11,7 +11,7 @@ export class EpisodesService {
   private readonly episodeUrl: string;
 
   constructor(private http: HttpClient) {
-    this.episodeUrl = 'http://localhost:8080/api/episode';
+    this.episodeUrl = 'http://localhost:8080/api/episodes';
   }
 
   public findAll(): Observable<Episode[]> {
