@@ -1,0 +1,28 @@
+<button (click)="gotoEpisodeForm()" class="btn btn-success">Add a new episode</button>
+<div class="card my-3">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Num</th>
+        <th scope="col">Is Seen</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let currentEpisode of episodes">
+        <td>{{ currentEpisode.id }}</td>
+        <td>{{ currentEpisode.title }}</td>
+        <td>{{ currentEpisode.num }}</td>
+        <td>{{ currentEpisode.seen }}</td>
+        <td>
+          <button class="btn btn-warning mr-3 disabled">Edit</button>
+          <button (click)="deleteSeason(currentEpisode)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
