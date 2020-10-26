@@ -60,7 +60,6 @@ public class EpisodeController {
     @PostMapping // Map ONLY POST Requests
     @ResponseStatus(HttpStatus.CREATED)
     public Episode create(@RequestBody Episode episode) throws InvalidEntryException {
-        System.out.println(episode.getNumber() + " " + episode.getTitle());
         if (episode.getNumber() > 0) {
             return repository.save(episode);
         } else {
