@@ -1,1 +1,24 @@
-<p>season-list works!</p>
+<button (click)="gotoSeasonForm()" class="btn btn-success">Add a new season</button>
+<div class="card my-3">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Num</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let currentSeason of season">
+        <td>{{ currentSeason.id }}</td>
+        <td>{{ currentSeason.num }}</td>
+        <td>
+          <button class="btn btn-warning mr-3 disabled">Edit</button>
+          <button (click)="deleteSeason(currentSeason)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

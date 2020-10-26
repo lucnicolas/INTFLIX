@@ -1,1 +1,21 @@
-<p>season-form works!</p>
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #seasonForm="ngForm">
+      <div class="form-group">
+        <label for="num">Num</label>
+        <input type="text" [(ngModel)]="season.num"
+               class="form-control"
+               id="num"
+               name="num"
+               placeholder="Enter your title"
+               required #num="ngModel">
+      </div>
+      <div [hidden]="!num.pristine" class="alert alert-danger">Num is required</div>
+
+      <button type="submit" [disabled]="!seasonForm.form.valid"
+              class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
+
+

@@ -12,6 +12,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { SeasonListComponent } from './components/admin/season-list/season-list.component';
 import { SeasonFormComponent } from './components/admin/season-form/season-form.component';
+import { EpisodeListComponent } from './components/admin/episode-list/episode-list.component';
+import { EpisodeFormComponent } from './components/admin/episode-form/episode-form.component';
 
 // configures NgModule imports and exports
 @NgModule({
@@ -21,7 +23,9 @@ import { SeasonFormComponent } from './components/admin/season-form/season-form.
     SeriesListComponent,
     SeriesFormComponent,
     SeasonListComponent,
-    SeasonFormComponent
+    SeasonFormComponent,
+    EpisodeListComponent,
+    EpisodeFormComponent
   ],
   imports: [
     BrowserModule,
