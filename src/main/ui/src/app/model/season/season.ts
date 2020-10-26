@@ -4,4 +4,5 @@ export class Season {
   id: number;
   fkSeries: Series;
   num: number;
+  seen: boolean
 }
