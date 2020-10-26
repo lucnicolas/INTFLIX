@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {SeriesService} from "../../../service/series/series.service";
-import {Series} from "../../../model/series/series";
+import {ActivatedRoute, Router} from '@angular/router';
+import {SeriesService} from '../../../service/series/series.service';
+import {Series} from '../../../model/series/series';
 
 @Component({
   selector: 'app-series-list',
@@ -20,17 +20,17 @@ export class SeriesListComponent implements OnInit {
     this.getAllSeries();
   }
 
-  getAllSeries() {
+  getAllSeries(): void {
     this.seriesService.findAll().subscribe(data => {
       this.series = data;
     });
   }
 
-  deleteSeries(series: Series) {
+  deleteSeries(series: Series): void {
     this.seriesService.delete(series).subscribe(() => this.getAllSeries());
   }
 
-  gotoSeriesForm() {
+  gotoSeriesForm(): void {
     this.router.navigate(['/admin/series/add']);
   }
 

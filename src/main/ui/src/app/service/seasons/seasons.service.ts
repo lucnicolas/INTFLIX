@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Season} from '../../model/season/season';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +18,11 @@ export class SeasonsService {
     return this.http.get<Season[]>(this.seasonUrl);
   }
 
-  public save(season: Season) {
+  public save(season: Season): Observable<Season> {
     return this.http.post<Season>(this.seasonUrl, season);
   }
 
-  public delete(season: Season) {
-    return this.http.delete<Season>(this.seasonUrl + "?id=" + season.id);
+  public delete(season: Season): Observable<Season> {
+    return this.http.delete<Season>(this.seasonUrl + '?id=' + season.id);
   }
 }

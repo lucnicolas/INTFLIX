@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {SeriesService} from "../../../service/series/series.service";
-import {Series} from "../../../model/series/series";
+import {ActivatedRoute, Router} from '@angular/router';
+import {SeriesService} from '../../../service/series/series.service';
+import {Series} from '../../../model/series/series';
 
 @Component({
   selector: 'app-series-form',
@@ -22,11 +22,11 @@ export class SeriesFormComponent implements OnInit {
     this.series = new Series();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.seriesService.save(this.series).subscribe(() => this.gotoSeriesList());
   }
 
-  gotoSeriesList() {
+  gotoSeriesList(): void {
     this.router.navigate(['/admin/series']);
   }
 }

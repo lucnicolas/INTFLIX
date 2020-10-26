@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Episode} from "../../../model/episode/episode";
-import {EpisodesService} from "../../../service/episodes/episodes.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {Episode} from '../../../model/episode/episode';
+import {EpisodesService} from '../../../service/episodes/episodes.service';
 
 @Component({
   selector: 'app-episode-form',
@@ -22,11 +22,11 @@ export class EpisodeFormComponent implements OnInit {
     this.episode = new Episode();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.episodesService.save(this.episode).subscribe(() => this.gotoEpisodeList());
   }
 
-  gotoEpisodeList() {
+  gotoEpisodeList(): void {
     this.router.navigate(['/admin/episode']);
   }
 }

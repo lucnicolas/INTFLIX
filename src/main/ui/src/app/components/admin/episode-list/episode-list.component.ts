@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Episode} from "../../../model/episode/episode";
-import {ActivatedRoute, Router} from "@angular/router";
-import {EpisodesService} from "../../../service/episodes/episodes.service";
+import {Episode} from '../../../model/episode/episode';
+import {ActivatedRoute, Router} from '@angular/router';
+import {EpisodesService} from '../../../service/episodes/episodes.service';
 
 @Component({
   selector: 'app-episode-list',
@@ -20,17 +20,17 @@ export class EpisodeListComponent implements OnInit {
     this.getAllEpisodes();
   }
 
-  getAllEpisodes() {
+  getAllEpisodes(): void {
     this.episodesService.findAll().subscribe(data => {
       this.episodes = data;
     });
   }
 
-  deleteSeason(episode: Episode) {
+  deleteSeason(episode: Episode): void {
     this.episodesService.delete(episode).subscribe( () => this.getAllEpisodes());
   }
 
-  gotoEpisodeForm() {
+  gotoEpisodeForm(): void {
     this.router.navigate(['/admin/episode/add']);
   }
 

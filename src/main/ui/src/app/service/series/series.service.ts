@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Series} from '../../model/series/series';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +18,11 @@ export class SeriesService {
     return this.http.get<Series[]>(this.seriesUrl);
   }
 
-  public save(series: Series) {
+  public save(series: Series): Observable<Series> {
     return this.http.post<Series>(this.seriesUrl, series);
   }
 
-  public delete(series: Series) {
-    return this.http.delete<Series>(this.seriesUrl + "?id=" + series.id);
+  public delete(series: Series): Observable<Series> {
+    return this.http.delete<Series>(this.seriesUrl + '?id=' + series.id);
   }
 }

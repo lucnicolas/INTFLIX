@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Season} from "../../../model/season/season";
-import {ActivatedRoute, Router} from "@angular/router";
-import {SeasonsService} from "../../../service/seasons/seasons.service";
+import {Season} from '../../../model/season/season';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SeasonsService} from '../../../service/seasons/seasons.service';
 
 @Component({
   selector: 'app-season-list',
@@ -20,17 +20,17 @@ export class SeasonListComponent implements OnInit {
     this.getAllSeasons();
   }
 
-  getAllSeasons() {
+  getAllSeasons(): void {
     this.seasonsService.findAll().subscribe(data => {
       this.season = data;
     });
   }
 
-  deleteSeason(season: Season) {
+  deleteSeason(season: Season): void {
     this.seasonsService.delete(season).subscribe( () => this.getAllSeasons());
   }
 
-  gotoSeasonForm() {
+  gotoSeasonForm(): void {
     this.router.navigate(['/admin/season/add']);
   }
 

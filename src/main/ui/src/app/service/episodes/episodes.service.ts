@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Episode} from '../../model/episode/episode';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +18,11 @@ export class EpisodesService {
     return this.http.get<Episode[]>(this.episodeUrl);
   }
 
-  public save(episode: Episode) {
+  public save(episode: Episode): Observable<Episode> {
     return this.http.post<Episode>(this.episodeUrl, episode);
   }
 
-  public delete(episode: Episode) {
-    return this.http.delete<Episode>(this.episodeUrl + "?id=" + episode.id);
+  public delete(episode: Episode): Observable<Episode> {
+    return this.http.delete<Episode>(this.episodeUrl + '?id=' + episode.id);
   }
 }
