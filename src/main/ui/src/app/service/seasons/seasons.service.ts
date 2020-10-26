@@ -11,7 +11,7 @@ export class SeasonsService {
   private readonly seasonUrl: string;
 
   constructor(private http: HttpClient) {
-    this.seasonUrl = 'http://localhost:8080/api/season';
+    this.seasonUrl = 'http://localhost:8080/api/seasons';
   }
 
   public findAll(): Observable<Season[]> {
