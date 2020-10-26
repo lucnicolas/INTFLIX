@@ -6,11 +6,6 @@ import java.util.Map;
 
 @Entity
 @Table(name = "Season")
-@NamedQueries({
-		@NamedQuery(name = "Season.findAll", query = "SELECT season FROM Season season"),
-		@NamedQuery(name = "Season.findBySeries",
-				query = "SELECT season FROM Series series, IN(series.seasons) season WHERE series.id = :id")
-})
 public class Season {
 
 	@Id
@@ -30,12 +25,7 @@ public class Season {
 
 	/**
 	 * Season constructor
-	 * @param number Number of the season
 	 */
-	public Season(final int number) {
-		this.number = number;
-	}
-
 	public Season() { }
 
 	/**

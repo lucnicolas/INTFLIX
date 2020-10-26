@@ -24,7 +24,7 @@ public class SeriesController {
      */
     @GetMapping // Map ONLY GET Requests
     public List<Series> findAll() {
-        // This returns a JSON or XML with the seriess
+        // This returns a JSON or XML with the series
         return repository.findAll();
     }
 

@@ -3,6 +3,7 @@ package edu.intech.intflix.controller;
 import edu.intech.intflix.data.model.Episode;
 import edu.intech.intflix.data.repository.EpisodeRepository;
 import edu.intech.intflix.exeption.IdMismatchException;
+import edu.intech.intflix.exeption.InvalidEntryException;
 import edu.intech.intflix.exeption.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,8 +59,13 @@ public class EpisodeController {
      */
     @PostMapping // Map ONLY POST Requests
     @ResponseStatus(HttpStatus.CREATED)
-    public Episode create(@RequestBody Episode episode) {
-        return repository.save(episode);
+    public Episode create(@RequestBody Episode episode) throws InvalidEntryException {
+        System.out.println(episode.getNumber() + " " + episode.getTitle());
+        if (episode.getNumber() > 0) {
+            return repository.save(episode);
+        } else {
+            throw new InvalidEntryException();
+        }
     }
 
     @DeleteMapping("/{id}")

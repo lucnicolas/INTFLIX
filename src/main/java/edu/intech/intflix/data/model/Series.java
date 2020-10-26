@@ -6,7 +6,6 @@ import java.util.Map;
 
 @Entity
 @Table(name = "Series")
-@NamedQuery(name = "Series.findAll", query = "SELECT series FROM Series series")
 public class Series {
 
 	@Id
@@ -26,12 +25,7 @@ public class Series {
 
 	/**
 	 * Series constructor
-	 * @param name Name of the series.
 	 */
-	public Series(final String name) {
-		this.name = name;
-	}
-
 	public Series() { }
 
 	/**

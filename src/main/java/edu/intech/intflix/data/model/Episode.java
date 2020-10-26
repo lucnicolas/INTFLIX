@@ -4,15 +4,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Episode")
-@NamedQueries({
-		@NamedQuery(name = "Episode.findAll", query = "SELECT episodes FROM Episode episodes"),
-		@NamedQuery(name = "Episode.findBySeries",
-				query = "SELECT episode FROM Season season, IN(season.episodes) episode WHERE season.id = :id")
-})
 public class Episode {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false)
 	private Long id;
 
 	@Column(name = "title", nullable = false)

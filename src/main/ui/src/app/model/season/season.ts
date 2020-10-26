@@ -1,8 +1,8 @@
-import {Series} from '../series/series';
+import {Episode} from "../episode/episode";
 
 export class Season {
   id: number;
-  fkSeries: Series;
-  num: number;
-  seen: boolean
+  number: number;
+  seen: boolean;
+  fkSeason: Episode;
 }
