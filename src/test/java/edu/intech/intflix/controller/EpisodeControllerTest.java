@@ -124,6 +124,7 @@ class EpisodeControllerTest {
     public void whenCreateNewEpisode_thenCreated() throws Exception {
         Episode episodeToCreate = new Episode();
         episodeToCreate.setTitle(randomAlphabetic(10));
+        episodeToCreate.setNumber(Integer.parseInt(randomNumeric(4)));
         mvc.perform(post(API_ROOT).contentType(MediaType.APPLICATION_JSON).content(JsonUtils.toJson(episodeToCreate)))
                 .andExpect(status().isCreated());
     }
