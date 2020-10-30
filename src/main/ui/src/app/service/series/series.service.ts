@@ -23,6 +23,6 @@ export class SeriesService {
   }
 
   public delete(series: Series): Observable<Series> {
-    return this.http.delete<Series>(this.seriesUrl + '?id=' + series.id);
+    return this.http.delete<Series>(this.seriesUrl + '/' + series.id);
   }
 }
