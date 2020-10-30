@@ -1,77 +1,51 @@
+<div class="border p-3">
+  <button (click)="open(content)" class="btn btn-md btn-outline-primary mr-3">
+    <i class="fa fa-user"></i>Add new series</button>
+</div>
+
 <div class="row">
-  <div class="col-sm">
-    <div class="card border-0 shadow my-2 bg-light">
-      <a (click)="gotoSeriesList()">
-        <div class="card-body p-5">
-          <h2 class="font-weight-light text-danger">SERIES LIST</h2>
-        </div>
-      </a>
-    </div>
-  </div>
-  <div class="col-sm">
-    <div class="card border-0 shadow my-2 bg-light">
-      <a (click)="gotoSeasonList()">
-        <div class="card-body p-5">
-          <h2 class="font-weight-light text-success">SEASONS LIST</h2>
-        </div>
-      </a>
+  <div *ngFor="let currentSeries of seriesList" class="col-sm-6 mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ currentSeries.name }}</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <button (click)="open(content, currentSeries, true)" class="btn btn-sm btn-info mr-1">
+          <i class="fa fa-search"></i>Details
+        </button>
+        <button (click)="open(content, currentSeries)" class="btn btn-sm btn-warning mr-1">
+          <i class="fa fa-edit"></i>Edit
+        </button>
+        <button (click)="onDelete(currentSeries)" class="btn btn-sm btn-danger mr-1">
+          <i class="fa fa-remove"></i>Delete
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm">
-    <div class="card border-0 shadow my-2 bg-light">
-      <a (click)="gotoEpisodeList()">
-        <div class="card-body p-5">
-          <h2 class="font-weight-light text-warning">EPISODES LIST</h2>
-        </div>
-      </a>
+<ng-template #content let-modal>
+  <form (ngSubmit)="onSubmit()" #seriesForm="ngForm" novalidate>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Series</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-  </div>
-  <div class="col-sm">
-    <div class="card border-0 shadow my-2 bg-light">
-      <a (click)="gotoUserList()">
-        <div class="card-body p-5">
-          <h2 class="font-weight-light text-info">USERS LIST</h2>
+    <div class="modal-body">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" [(ngModel)]="selectedSeries.name"
+                 class="form-control"
+                 id="name"
+                 name="name"
+                 placeholder="Enter series's name"
+                 [disabled]="showDetails"
+                 required #name="ngModel">
         </div>
-      </a>
+        <div [hidden]="name.value" class="alert alert-danger">Name is required</div>
     </div>
-  </div>
-</div>
-
-<!-- Template for next steps
-<h1>My series</h1>
-<div class="alert alert-danger" role="alert">
-  A simple danger alert—check it out!
-</div>
-<button title="Create a new series">➕</button>
-<table style="padding: 20px; border: 1px;">
-  <tr>
-    <td colspan="3" class="series seen">Series Name</td>
-    <td class="seen">
-      <button title="Create a new season">➕</button>
-      <button title="Delete current series">❌</button>
-      <button id="series_bt" title="Hide series content">🔼</button>
-    </td>
-  </tr>
-  <tr class="series_season">
-    <td class="filler">&nbsp;</td>
-    <td class="Saison seen" colspan="2">Season N°1</td>
-    <td class="seen">
-      <button title="Create a new episode">➕</button>
-      <button title="Delete current season">❌</button>
-      <button id="season_bt" title="Hide season content">🔼</button>
-    </td>
-  </tr>
-  <tr class="series_season series1_ep">
-    <td class="filler">&nbsp;</td>
-    <td class="filler">&nbsp;</td>
-    <td class="seen Episode">Episode 1</td>
-    <td class="seen">
-      <button title="Switch state"><img alt="Switch state" src="https://raw.githubusercontent.com/lucnicolas/INTFLIX-Backend/master/src/main/webapp/img/EyeChange_small.png"></button>
-      <button title="Remove episode">❌</button>
-    </td>
-  </tr>
-</table>
--->
+    <div class="modal-footer">
+      <button type="submit" [disabled]="!seriesForm.form.valid" class="btn btn-outline-dark">Save</button>
+    </div>
+  </form>
+</ng-template>
