@@ -4,5 +4,5 @@ export class Series {
   id: number;
   name: string;
   seen: boolean;
-  fkSeries: Season;
+  fkSeries: Season[];
 }

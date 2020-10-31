@@ -3,6 +3,9 @@ import {Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SeriesService} from "../../../service/series/series.service";
 import {Series} from "../../../model/series/series";
+import {Season} from "../../../model/season/season";
+import {SeasonsService} from "../../../service/seasons/seasons.service";
+import {count} from "rxjs/operators";
 
 @Component({
   selector: 'app-admin-home',
@@ -12,13 +15,19 @@ import {Series} from "../../../model/series/series";
 export class AdminHomeComponent implements OnInit {
 
   selectedSeries: Series;
+  seriesToDelete: Series;
   seriesList: Series[];
+
+  seasonsOfSelectedSeries: Season[];
+
   showDetails: boolean;
   closeResult: string;
+  countSeasons: number;
 
   constructor(private router: Router,
               private modalService: NgbModal,
-              private seriesService: SeriesService) { }
+              private seriesService: SeriesService,
+              private seasonsService: SeasonsService) { }
 
   ngOnInit(): void {
     this.getAllSeries();
@@ -37,7 +46,12 @@ export class AdminHomeComponent implements OnInit {
   open(content: any, series?: Series, showDetails?: boolean) {
 
     this.showDetails = (showDetails) ? this.showDetails = true : false;
-    this.selectedSeries = (series != null) ? series : new Series();
+    if (series != null) {
+      this.selectedSeries = series;
+      this.seasonsOfSelectedSeries = this.selectedSeries.fkSeries
+    } else {
+      this.selectedSeries = new Series();
+    }
 
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title',})
@@ -65,8 +79,24 @@ export class AdminHomeComponent implements OnInit {
     });
   }
 
-  onDelete(series: Series): void {
-    this.seriesService.delete(series).subscribe(() => this.getAllSeries());
+  openDelete(targetModal, series: Series) {
+    this.seriesToDelete = series;
+    this.modalService.open(targetModal, {
+      backdrop: 'static',
+    });
+    document.getElementById('delete_modal_text').innerHTML='Are you sure you want to delete <i>'+series.name+ '</i> series ?'
+  }
+
+  deleteSelectedSeries(): void {
+    this.seriesService.delete(this.seriesToDelete).subscribe(() => {
+      this.getAllSeries();
+      this.modalService.dismissAll();
+      this.seriesToDelete = null;
+    });
+  }
+
+  addNewSeason() {
+
   }
 
 }
