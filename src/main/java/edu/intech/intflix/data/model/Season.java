@@ -68,8 +68,8 @@ public class Season {
 	 *         watched, <code>false</code> otherwise.
 	 */
 	public boolean isSeen() {
-		this.seen = true;
 		if (this.episodes.size() > 0) {
+			this.seen = true;
 			for (Episode episode : this.episodes.values()) {
 				if (!episode.isSeen()) {
 					this.seen = false;

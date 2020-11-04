@@ -1,6 +1,8 @@
 package edu.intech.intflix.controller;
 
+import edu.intech.intflix.data.model.Season;
 import edu.intech.intflix.data.model.Series;
+import edu.intech.intflix.data.repository.SeasonRepository;
 import edu.intech.intflix.data.repository.SeriesRepository;
 import edu.intech.intflix.utils.JsonUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -11,11 +13,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.lang.reflect.Array;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -29,8 +34,11 @@ class SeriesControllerTest {
     @Autowired // Inject MockMvc
     private MockMvc mvc;
 
-    @Autowired // Inject repository
-    private SeriesRepository repository;
+    @Autowired // Inject series repository
+    private SeriesRepository seriesRepository;
+
+    @Autowired // Inject series repository
+    private SeasonRepository seasonRepository;
 
     private static final String API_ROOT = "/api/series";
 
@@ -39,7 +47,7 @@ class SeriesControllerTest {
      */
     @AfterEach
     public void resetDb() {
-        repository.deleteAll();
+        seriesRepository.deleteAll();
     }
 
     /**
@@ -47,13 +55,22 @@ class SeriesControllerTest {
      * @throws Exception
      */
     @Test
-    public void givenSeriess_whenGetSeriess_thenStatus200() throws Exception {
+    public void givenSeries_whenGetSeries_thenStatus200() throws Exception {
         String seriesName = randomAlphabetic(10);
+        Season season1 = new Season();
+        season1.setNumber(1);
+        Season season2 = new Season();
+        season2.setNumber(2);
+        Map<Integer, Season> seriesSeasons = new HashMap<>();
+        seriesSeasons.put(season1.getNumber(), season1);
+        seriesSeasons.put(season2.getNumber(), season2);
         Series series = new Series();
         series.setName(seriesName);
-        repository.save(series);
+        series.setSeasons(seriesSeasons);
+        seriesRepository.save(series);
         mvc.perform(get("/api/series")
                 .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -177,7 +194,7 @@ class SeriesControllerTest {
     private Series createTestSeries() {
         Series series = new Series();
         series.setName(randomAlphabetic(20));
-        repository.save(series);
-        return repository.findByName(series.getName());
+        seriesRepository.save(series);
+        return seriesRepository.findByName(series.getName());
     }
 }
